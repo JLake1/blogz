@@ -102,3 +102,8 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+test.py
+test2.py
+test3.py
+single-backup.html

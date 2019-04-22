@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Blog</title>
+        <style type="text/css">
+            body{
+              width: 900px;
+              display: block;
+              margin: 0 auto;
+              background-color: lawngreen;
+    background-position-y: center;
+            }
+            #blog-main h1{
+              text-align:center;
+              font-size: 32px;
+            }
+            .entries div, .single div{
+                background-color: #ffffff;
+                border: 1px solid darkgrey;
+                margin: 14px;
+                padding: 14px;
+            }
+            .nav{
+              margin-top: 30px; 
+              }
+            .nav a {
+              width:230px;
+              margin: 12px;
+              font-size: 18px;
+              padding: 14px;
+            }
+            #single{
+              background: #fff;
+              padding: 24px 32px;
+              margin-top: 30px;
+            }
+            #add{
+              padding: 0px 30px;
+              background-color: lightgrey;
+              display: block;
+              width: 400px;
+              margin: 0 auto;
+              text-align: center
+            }
+            
+            #add form{
+              padding-bottom: 20px;
+            }
+            #add h1{
+              padding: 38px 0 18px 0;
+            }
+
+            #add input, #add textarea{
+              display: block;
+              margin: 0 auto;
+              margin: 7px auto 36px auto;
+              width: 250px
+            }
+            #add label{
+              text-align: center;
+              font-weight: bold;
+              font-size:18px;
+            }
+            .flashes{
+              color: red;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="nav">
+            <a href="/">Home</a>
+            <a href="/add">Add a post</a>
+          </div>
+
+        {% block content %}
+        {% endblock %}
+
+    </body>
+</html>
