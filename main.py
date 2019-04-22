@@ -20,13 +20,6 @@ class Blog(db.Model):
         self.title = title
         self.body = body
 
-"""
-@app.route('/blog?<url>', methods=['GET'])
-def single_post(url):
-    return render_template('single.html', title="Main Blog", new_title=new_title, new_body=new_body, blogs=blogs)
-    #return redirect("http://{0}/munin".format(field))
-"""
-
  
 @app.route('/blog', methods=['GET', 'POST'])
 def page():
@@ -37,9 +30,7 @@ def page():
     
 
     if request.method == 'GET':
-        
-        #blog_title= "abc"
-        #blog_title = request.args.get('blog_title')
+         
         blog_id = request.args.get('id')
         blogs = Blog.query.filter_by(id=blog_id).first() 
 
@@ -50,10 +41,8 @@ def page():
     if request.method == 'POST':
         blog_title = request.form['title']
         blog_body = request.form['body']
-        new_title = Blog(blog_title, blog_body)
-        #new_body = Blog(blog_title, blog_body)
-        db.session.add(new_title)
-        #db.session.add(new_body)
+        new_title = Blog(blog_title, blog_body) 
+        db.session.add(new_title) 
         db.session.commit()
         return render_template('single.html', title="If Post Statement Blog", new_title=new_title, blog_title=blog_title, blog_body=blog_body, blogs=blogs)
 
@@ -77,10 +66,7 @@ def add():
 
     if request.method == 'GET':
         
-        #blog_title= "abc"
-        #blog_title = request.args.get('blog_title')
-        user_id = "test"
-        #user_id = request.args.get('id')
+        user_id = "test" 
         blog_id = request.args.get('id')
         blogs = Blog.query.filter_by(id=blog_id).first() 
 
@@ -104,14 +90,11 @@ def add():
             flash('Please fill out the body section')
             return redirect('/add')
 
-        db.session.add(new_title)
-        #db.session.add(new_body)
+        db.session.add(new_title) 
         db.session.commit()
         user_id =  str(new_title.id)
         url = '/blog?id=' + user_id
-        return redirect(url)
-        #return render_template('add.html', url=url, title="Add form POST", new_title=new_title, blog_title=blog_title, blog_body=blog_body, blogs=blogs, user_id=user_id)
-
+        return redirect(url) 
     
 
 
@@ -134,38 +117,14 @@ def index():
         blog_title = request.form['title']
         blog_body = request.form['body']
         new_title = Blog(blog_title, blog_body)
-        #new_body = Blog(blog_title, blog_body)
-        db.session.add(new_title)
-        #db.session.add(new_body)
-        db.session.commit()
-        
-    #user_id = request.args.get('id')
-    #print(user_id)
+        db.session.add(new_title) 
+        db.session.commit() 
 
     blogs = Blog.query.all()
 
     return render_template('blog.html', title="Main Blog", new_title=new_title, new_body=new_body, blogs=blogs, blog_title=blog_title)
     #return redirect("/")
 
-    """
-    tasks = Task.query.filter_by(completed=False).all()
-    completed_tasks = Task.query.filter_by(completed=True).all()
-    return render_template('todos.html',title="Get It Done!", 
-        tasks=tasks, completed_tasks=completed_tasks)
-    """
-
-"""
-@app.route('/delete-task', methods=['POST'])
-def delete_task():
-
-    task_id = int(request.form['task-id'])
-    task = Task.query.get(task_id)
-    task.completed = True
-    db.session.add(task)
-    db.session.commit()
-
-    return redirect('/')
-"""
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RU'
 
