@@ -3,21 +3,31 @@
  
 <div id="blog-main">
   
-  <h1>Blog Entries</h1>
+  <h1>Blogz</h1>
 
   <div class="entries">
-
+      
         {% for blog in blogs %}
         <div>
-        <h1>{{blog.blog_title}}</h1> 
+
+            <h2><a href="/blog?id={{blog.id}}">{{blog.title}}</a></h2>
+            <p>{{blog.body}}</p>
+        
+            {% for author in authors %}
+                {% if author.id == blog.owner_id %}
+                    <h4>
+                    Written by: 
+                    <a href="/blog?author_id={{blog.owner_id}}">
+                    {{author.email}}
+                    </a>
+                    </h4>
+                {% endif %} 
+            {% endfor %}
  
- 
-        <a href="/blog?id={{blog.id}}">{{blog.title}}</a>
-            <h3>{{blog.body}}</h3>
         </div>
         {% endfor %}
-
-  </div>  
+ 
+  </div>    
 </div>
  
 

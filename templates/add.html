@@ -1,25 +1,36 @@
 {% extends "base.html" %}
 {% block content %}
- 
-<div id="add"> 
-    <h1>Add a Post</h1>
 
-    {% with messages = get_flashed_messages() %}
-          {% if messages %}
-            <div class=flashes>
-              {% for message in messages %}
-              <p>{{ message }}</p>
-              {% endfor %}
-            </div>
-          {% endif %}
-        {% endwith %}
+<!--
+{% with email = session['email'] %}
+     <h2>Welcome {{email}} </h2>
+{% endwith %}
+
+{% with id = session['id'] %}
+     <h2>Welcome {{id}} </h2>
+{% endwith %}
+-->
+<div id="add"> 
+  <h1>Add a Post</h1>
+
+  {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class=flashes>
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
 
 <form action="{{ url }}".format(url) method="post">
-  <p><label>Title <input type="text" name="title"/></label></p>
-  <p><label>Body <textarea rows="10" cols="30" type="text" name="body"/></textarea></label></p>
-  <input type="hidden" name="id" />
-  <p><input type="submit" value="Submit"/></p>
+<p><label>Title <input type="text" name="title"/></label></p>
+<p><label>Body <textarea rows="10" cols="30" type="text" name="body"/></textarea></label></p>
+<input type="hidden" name="id" />
+<p><input type="submit" value="Submit"/></p>
 </form>
 </div>
+
+
 
 {% endblock %}

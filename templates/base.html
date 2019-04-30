@@ -10,9 +10,15 @@
               background-color: lawngreen;
     background-position-y: center;
             }
-            #blog-main h1{
+            #authors .entries div{
+              text-align: center;
+              padding: 22px 0;
+              font-size: 18px;
+            }
+            #blog-main h1, h1{
               text-align:center;
               font-size: 32px;
+              padding-top: 20px;
             }
             .entries div, .single div{
                 background-color: #ffffff;
@@ -31,7 +37,7 @@
             }
             #single{
               background: #fff;
-              padding: 24px 32px;
+              padding: 4px 32px 30px 32px;
               margin-top: 30px;
             }
             #add{
@@ -70,7 +76,11 @@
     <body>
         <div class="nav">
             <a href="/">Home</a>
+            <a href="/blog">Blog</a>
             <a href="/add">Add a post</a>
+            <a href="/signup">Register</a>
+            <a href="/login">Log in</a>
+            <a href="/logout">Log out</a>
           </div>
 
         {% block content %}

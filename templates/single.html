@@ -7,6 +7,19 @@
   <div>
     <h1>{{blogs.title}}</h1>
     <p>{{blogs.body}} </p>
+
+    {% for author in authors %}
+    {% if blogs.owner_id == author.id %}
+             
+                    <h4>
+                    Written by: 
+                    <a href="/blog?author_id={{author.id}}">
+                    {{author.email}}
+                    </a>
+                    </h4>
+         
+    {% endif %}
+    {% endfor %}
   </div>
 
 </div>
